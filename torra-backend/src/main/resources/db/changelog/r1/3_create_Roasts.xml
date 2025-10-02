@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="3" author="João Luís Cardoso">
+        <createTable tableName="roasts">
+            <column name="id" 
+                    type="UUID" 
+                    remarks="PK da tabela.">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" 
+            type="VARCHAR(100)" remarks="Nome ou identificação da torra.">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="user_id" 
+                    type="UUID" 
+                    remarks="FK para o usuário que realizou a torra.">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="coffee_quality_id" 
+                    type="UUID" 
+                    remarks="FK para a qualidade do café utilizado.">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" 
+                    type="TIMESTAMP WITH TIME ZONE" 
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" 
+                    type="TIMESTAMP WITH TIME ZONE" 
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            
+        </createTable>
+
+    <addForeignKeyConstraint constraintName="fk_roasts_users"
+                             baseTableName="roasts"
+                             baseColumnNames="user_id"
+                             referencedTableName="users"
+                             referencedColumnNames="id"/>
+
+    <addForeignKeyConstraint constraintName="fk_roasts_coffee_qualities"
+                             baseTableName="roasts"
+                             baseColumnNames="coffee_quality_id"
+                             referencedTableName="coffee_qualities"
+                             referencedColumnNames="id"/>
+
+    </changeSet>
+</databaseChangeLog>

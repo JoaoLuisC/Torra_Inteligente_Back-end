@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="5" author="João Luís Cardoso">
+        <createTable tableName="sensory_analyses">
+            
+            <column name="id" 
+                    type="UUID" 
+                    remarks="PK da tabela.">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            
+            <column name="roast_id" 
+                    type="UUID"     
+                    remarks="FK para a torra que está sendo analisada.">
+                <constraints nullable="false" unique="true"/> 
+            </column>
+
+            <column name="powder_aroma" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota do aroma do pó."/>
+
+            <column name="fragrance" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota da fragrância (café com água)."/>
+            
+            <column name="flavor" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota de sabor."/>
+
+            <column name="acidity" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota de acidez."/>
+
+            <column name="body" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota de corpo."/>
+
+            <column name="aftertaste" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota de retro-gosto."/>
+
+            <column name="balance" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota de equilíbrio."/>
+
+            <column name="sweetness" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota de doçura."/>
+
+            <column name="uniformity" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota de uniformidade."/>
+
+            <column name="defects" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota de defeitos."/>
+
+            <column name="overall_assessment" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota de balanço/avaliação geral."/>
+
+            <column name="final_aroma" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Valor calculado: (powder_aroma + fragrance) / 2. Persistido pela aplicação."/>
+
+            <column name="overall_assessment" 
+                    type="NUMERIC(3, 1)" 
+                    remarks="Nota de balanço/avaliação geral."/>
+            
+            <column name="created_at" 
+                    type="TIMESTAMP WITH TIME ZONE" 
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" 
+                    type="TIMESTAMP WITH TIME ZONE" 
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    
+    <addForeignKeyConstraint constraintName="fk_sensory_analyses_roasts"
+                             baseTableName="sensory_analyses"
+                             baseColumnNames="roast_id"
+                             referencedTableName="roasts"
+                             referencedColumnNames="id"/>
+
+    </changeSet>
+</databaseChangeLog>

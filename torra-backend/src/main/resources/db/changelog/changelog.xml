@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <!-- Release 1 -->
+    <include file="/db/changelog/r1/1_create_User.xml"/>
+    <include file="/db/changelog/r1/2_create_Roasters.xml"/>
+    <include file="/db/changelog/r1/3_create_Roasts.xml"/>
+    <include file="/db/changelog/r1/4_create_Coffee_Quality.xml"/>
+    <include file="/db/changelog/r1/5_create_Sensory_Analysis.xml"/>
+    
+</databaseChangeLog>

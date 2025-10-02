@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="4" author="João Luís Cardoso">
+        <createTable tableName="coffee_qualities">
+            <column name="id" type="UUID" remarks="PK da tabela.">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="variety" 
+                    type="VARCHAR(50)" 
+                    remarks="Variedade do café. Ex: 'Arábico', 'Bourbon'.">
+                <constraints nullable="false" checkConstraint="CHECK (variety IN ('ARABICO', 'BOURBON'))"/> 
+            </column>
+
+            <column name="density" 
+                    type="NUMERIC(10, 2)" 
+                    remarks="Densidade do café."/>
+            </column>
+
+            <column name="fermentation" 
+                    type="VARCHAR(50)" 
+                    remarks="Tipo de fermentação. Ex: 'Natural', 'Fermentado'.">
+                <constraints nullable="false" checkConstraint="CHECK (fermentation IN ('NATURAL', 'FERMENTADO', 'CD'))"/>
+            </column>
+
+            <column name="purpose" 
+                    type="VARCHAR(50)" 
+                    remarks="Finalidade do café. Ex: 'Espresso', 'Filtro'.">
+                <constraints nullable="false" checkConstraint="CHECK (purpose IN ('ESPRESSO', 'FILTRO', 'AMOSTRA'))"/>
+            </column>
+
+            <column name="created_at" 
+                    type="TIMESTAMP WITH TIME ZONE" 
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" 
+                    type="TIMESTAMP WITH TIME ZONE" 
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

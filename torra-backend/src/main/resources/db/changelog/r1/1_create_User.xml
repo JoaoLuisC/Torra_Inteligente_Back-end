@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="1" author="João Luís Cardoso">
+        <createTable tableName="users">
+            
+            <column name="id" 
+                    type="UUID" 
+                    remarks="PK da tabela. Usando UUID.">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="first_name" 
+                    type="VARCHAR(100)" 
+                    remarks="Primeiro nome do usuário.">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_name" 
+                    type="VARCHAR(100)" 
+                    remarks="Sobrenome do usuário.">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="user_type" 
+                    type="VARCHAR(20)" 
+                    remarks="Tipo de usuário: ANALYST, PRODUCER, ADMIN.">
+                <constraints nullable="false" 
+                            checkConstraint="CHECK (user_type IN ('ANALYST', 'PRODUCER', 'ADMIN'))"/>
+            </column>
+
+            <column name="email" 
+                    type="VARCHAR(150)" 
+                    remarks="Email do usuário. Deve ser único.">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="password" 
+                    type="VARCHAR(255)" 
+                    remarks="Hash da senha do usuário.">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" 
+                    type="TIMESTAMP WITH TIME ZONE" 
+                    defaultValueComputed="CURRENT_TIMESTAMP" 
+                    remarks="Data de criação do registro.">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" 
+                    type="TIMESTAMP WITH TIME ZONE" 
+                    defaultValueComputed="CURRENT_TIMESTAMP" 
+                    remarks="Data da última atualização do registro.">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

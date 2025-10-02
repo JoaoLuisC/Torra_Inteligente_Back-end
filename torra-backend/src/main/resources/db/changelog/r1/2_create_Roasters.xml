@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="2" author="João Luís Cardoso">
+        <createTable tableName="roasters">
+
+            <column name="id" 
+                    type="UUID" 
+                    remarks="PK da tabela.">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" 
+                    type="VARCHAR(100)" 
+                    remarks="Nome do torrador (máquina ou perfil).">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="user_id" 
+                    type="UUID" 
+                    remarks="FK para a tabela 'users', indica o proprietário.">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" 
+                    type="TIMESTAMP WITH TIME ZONE" 
+                    defaultValueComputed="CURRENT_TIMESTAMP" 
+                    remarks="Data de criação do registro.">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" 
+                    type="TIMESTAMP WITH TIME ZONE" 
+                    defaultValueComputed="CURRENT_TIMESTAMP" 
+                    remarks="Data da última atualização do registro.">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="roasters"
+                baseColumnNames="user_id"
+                constraintName="fk_roasters_users"
+                referencedTableName="users"
+                referencedColumnNames="id"/>
+
+    </changeSet>
+</databaseChangeLog>
