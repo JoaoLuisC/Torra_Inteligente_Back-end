@@ -60,10 +60,6 @@
                     type="NUMERIC(3, 1)" 
                     remarks="Nota de defeitos."/>
 
-            <column name="overall_assessment" 
-                    type="NUMERIC(3, 1)" 
-                    remarks="Nota de balanço/avaliação geral."/>
-
             <column name="final_aroma" 
                     type="NUMERIC(3, 1)" 
                     remarks="Valor calculado: (powder_aroma + fragrance) / 2. Persistido pela aplicação."/>
