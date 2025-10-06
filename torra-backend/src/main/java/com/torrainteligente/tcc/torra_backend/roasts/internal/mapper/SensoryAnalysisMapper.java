@@ -1,5 +1,8 @@
 package com.torrainteligente.tcc.torra_backend.roasts.internal.mapper;
 
-public class SensoryAnalysisMapper {
+import org.mapstruct.Mapper;
+
+@Mapper(componentModel = "spring")
+public interface SensoryAnalysisMapper {
     
 }

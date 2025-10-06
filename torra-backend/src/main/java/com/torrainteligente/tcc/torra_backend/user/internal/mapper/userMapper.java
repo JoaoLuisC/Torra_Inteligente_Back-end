@@ -1,5 +1,8 @@
 package com.torrainteligente.tcc.torra_backend.user.internal.mapper;
 
-public class userMapper {
+import org.mapstruct.Mapper;
+
+@Mapper(componentModel = "spring")
+public interface UserMapper {
     
 }
