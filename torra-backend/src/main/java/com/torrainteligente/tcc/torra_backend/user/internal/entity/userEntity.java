@@ -6,6 +6,7 @@ import java.util.UUID;
 import com.torrainteligente.tcc.torra_backend.shared.helpers.EqualsByUUID;
 import com.torrainteligente.tcc.torra_backend.shared.helpers.HashCodeByUUID;
 import com.torrainteligente.tcc.torra_backend.shared.interfaces.UUIDTorraEntity;
+import com.torrainteligente.tcc.torra_backend.user.internal.enums.UserType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

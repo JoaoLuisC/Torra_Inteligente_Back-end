@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.6</version>
+        <version>3.2.11</version>
         <relativePath/> </parent>
     <groupId>com.torrainteligente.tcc</groupId>
     <artifactId>torra-backend</artifactId>
@@ -26,7 +26,7 @@
         <url/>
     </scm>
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
         <spring-modulith.version>1.4.1</spring-modulith.version>
         <springdoc.version>2.5.0</springdoc.version> 
         <mapstruct.version>1.5.5.Final</mapstruct.version>
@@ -139,6 +139,12 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
